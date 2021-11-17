@@ -5,7 +5,7 @@
     <title>Simple Store</title>
 </head>
 <body>
-<form action="/page.html" method="POST">
+<form action="/storePage.html" method="POST">
     Login: <input type="text" name="message"/>
     <input type="submit" value="Ok">
 </form>
@@ -15,7 +15,23 @@
     <p>We have these autos:
     <table border=1>
         <#list products as product>
-        <tr><td>${product.id}<td>${product.name}<td>${product.price} Euros
+        <tr>
+            <td>${product.id}
+            <td>${product.name}
+            <td>${product.price} $
+            <td>
+                <form action="/storePage.html" method="POST">
+                    <input type="text" hidden="true" name="edit" value="${product.id}"/>
+                    <input type="submit" value="Edit">
+                </form>
+            </td>
+ <td>
+                <form action="/storePage.html" method="POST">
+                    <input type="text" hidden="true" name="delete" value="${product.id}"/>
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+
         </#list>
     </table>
 </ul>
@@ -25,7 +41,6 @@
 <p>Method: ${method}</p>
 
 <p>URL: ${URL}</p>
-
 
 
 <p>SessionId: ${sessionId}</p>

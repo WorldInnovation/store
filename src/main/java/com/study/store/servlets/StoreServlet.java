@@ -39,25 +39,15 @@ public class StoreServlet extends HttpServlet {
 
         {
             out.println("<table border=\"1\">");
-                if (resultSet.next()) {
-                    out.println("<tr>");
-                    out.println("<td>" + resultSet.getInt("id") + "</td>");
-                    out.println("<td>" + resultSet.getString("name") + "</td>");
-                    out.println("<td>" + resultSet.getString("price") + "</td>");
-                    out.println("</tr>");
-                }
-            out.println("</table>");
-            //-----------------
-            ProductModel productModel = new ProductModel();
             List<ProductModel> productModelList = new ArrayList<>();
             while(resultSet.next()) {
+                ProductModel productModel = new ProductModel();
                 productModel.setId(resultSet.getInt("id"));
                 productModel.setName(resultSet.getString("name"));
                 productModel.setPrice(resultSet.getInt("price"));
-               //* productModel.setDate(resultSet.getDate("data"));
+                productModel.setDate(resultSet.getDate("data"));
                 productModelList.add(productModel);
             }
-
             //--------------
             Map<String, Object> pageVariables = createPageVariablesMap(req, productModelList);
             pageVariables.put("message", "");
