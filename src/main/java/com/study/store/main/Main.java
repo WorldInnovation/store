@@ -13,6 +13,8 @@ public class Main {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
         context.addServlet(new ServletHolder(new StoreServlet()), "/store");
+        context.addServlet(new ServletHolder(new StoreServlet()), "/productEdit");
+        context.addServlet(new ServletHolder(new StoreServlet()), "/productDelete");
         context.addServlet(new ServletHolder(allRequestsServlet), "/*");
 
         Server server = new Server(8080);

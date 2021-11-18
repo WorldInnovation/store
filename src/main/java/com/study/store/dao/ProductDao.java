@@ -4,10 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ProductDao<T> {
-    void delete(T entity) throws SQLException;
+    void delete(int id) throws SQLException;
 
     void update(T entity) throws SQLException;
 
-    List<T> getAll(String depID) throws SQLException;
-
+    List<T> getAll(String storeID) throws SQLException;
 }
